@@ -35,14 +35,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "xCommand",
+          "href": "https://xcommand.ai/",
+          "icon": "terminal"
         }
       ]
     }
@@ -57,12 +52,7 @@
         "label": "Support",
         "href": "mailto:hello@xcommand.ai"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
+    ]
   },
   "contextual": {
     "options": [
@@ -78,9 +68,9 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/xcommand",
+      "github": "https://github.com/xcommand-ai",
+      "linkedin": "https://linkedin.com/company/xcommand"
     }
   }
 }

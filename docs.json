@@ -17,7 +17,9 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart"
+              "quickstart",
+              "development",
+              "cli"
             ]
           },
           {
@@ -83,8 +85,8 @@
     }
   },
   "logo": {
-    "light": "/logo/xcommand-light.svg",
-    "dark": "/logo/xcommand-dark.svg"
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
   },
   "navbar": {
     "links": [

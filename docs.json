@@ -17,16 +17,16 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "development",
-              "cli"
+              "quickstart"
             ]
           },
           {
-            "group": "Customization",
+            "group": "xCommand CLI",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "cli/installation",
+              "cli/commands",
+              "cli/core-concepts",
+              "cli/integrations"
             ]
           },
           {

@@ -1,75 +1,36 @@
 ---
 title: "xCommand CLI"
-description: "Experience the next generation of infrastructure management where artificial intelligence meets developer productivity."
+description: "Learn how to use xCommand."
+icon: "terminal"
 ---
 
-## Installation
+Experience the next generation of cloud management where artificial intelligence meets developer productivity.
+xCommand works locally or remotely, as you keep interacting xCommand starts to build context and memories 
+about you and your platform.
 
-To install the xCommand CLI, run the following command in your terminal:
+xCommand knowledge feature is a powerful and lightweight system. Providing agents to handle and answer various tasks. 
+Plugins allows xCommand to interact with users or different systems. Out of the box, you can interact with
+your xCommand agents from Slack, Teams, etc. xCommand will be able to connect to your PagerDuty, Incident.io, Linear, Notion
+with the help of plugins.
 
-```bash
-curl -s https://xcommand.ai/fe78b1cd-5a2a-4ff7-9532-3d73f1a236c5/install.sh | bash
-```
+Run xCommand as a server, adds the further capabilities to your agent, why babysit your agent when it can manage your worklife
+and platform. That allows xCommand to be your 24/7 on-call operator when needed.
 
-## Getting Started
+## Learn More
 
-### Authentication
+One command infinite possibilities.
 
-Before using xCommand, you need to authenticate. You can trigger the login process by running:
-
-```bash
-xcommand login
-```
-
-Alternatively, you can simply press `L` when the CLI is running in interactive mode.
-
-### Basic Usage
-
-Run the CLI in interactive mode:
-
-```bash
-xcommand
-```
-
-To run xCommand in server mode:
-
-```bash
-xcommand server --port 8080
-```
-
-## CLI Features
-
-### AI Chat
-
-Once logged in, you can interact with the AI directly from your terminal. The AI has access to your project context and can help you with coding, debugging, and infrastructure management.
-
-### Slash Commands
-
-While in the interactive chat, you can use slash commands to perform specific actions:
-
-- `/knowledge`: Manage your knowledge base.
-  - `/knowledge list`: List installed modules.
-  - `/knowledge search [query]`: Search for modules.
-  - `/knowledge add <name>`: Install a module.
-  - `/knowledge delete <name>`: Remove a module.
-- `/insights`: View session and token usage insights.
-- `/logout`: Sign out of your account.
-- `/clear`: Clear the chat history.
-- `/help`: Show the help screen.
-
-### Shell Mode
-
-You can run local shell commands directly from the xCommand interface by prefixing them with a backslash (`\`):
-
-```bash
-\ls -la
-\cd ..
-```
-
-### Session Management
-
-When you exit a session, xCommand saves it. You can rejoin a saved session by running:
-
-```bash
-xcommand [session-id]
-```
+<Columns cols={2}>
+  <Card title="Installation" icon="asterisk" href="/cli/installation">
+    Install the xCommand CLI.
+  </Card>
+  <Card title="Commands" icon="code" href="/cli/commands">
+    Learn how to use xCommand, full documentation of all the commands
+  </Card>
+  <Card title="Core Concepts" icon="lightbulb" href="/cli/core-concepts">
+    Understand sessions, server, plugins and more.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/cli/integrations">
+    Learn how to integrate xCommand with your existing tools and workflows.
+  </Card>
+</Columns>

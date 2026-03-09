@@ -3,3 +3,79 @@ title: "Core Concepts"
 description: "Understand sessions, server, plugins and more."
 icon: "lightbulb"
 ---
+
+xCommand CLI is built on several key concepts that govern how it manages state, interacts with your local environment, and ensures safety during operations.
+
+## Sessions
+
+A **Session** in xCommand is a distinct conversation and operation context. Every time you start the CLI, you are working within a session.
+
+- **Session IDs**: Every session has a unique identifier (e.g., `cli_uuid`). You can resume a previous session by passing its ID as an argument: `xcommand [session-id]`.
+- **Context Awareness**: Sessions maintain a shared context between the CLI and the xCommand Operator Service, allowing the AI to remember recent actions and workspace state.
+
+## Session Storage
+
+xCommand uses a dual-layered approach to session storage to ensure responsiveness and persistence:
+
+- **Local Storage**: Sessions are backed up locally in `~/.xcommand/sessions/`. This includes `history.jsonl` files containing the message history and token usage metadata.
+- **Cloud Synchronization**: When authenticated, sessions are synced with the xCommand cloud. This enables features like `/insights` and cross-device session management.
+- **Automatic Restore**: If a session expires on the server but exists locally, the CLI will automatically attempt to restore it.
+
+## Memory
+
+Memory allows xCommand to remember specific details across sessions and conversations.
+
+- **Autonomous Management**: Unlike sessions, Memory is managed intelligently by the AI. It uses specialized tools to save important context (`save_memory`), list available information (`list_memories`), and recall specific details during a conversation.
+- **Session Memory**: Short-term context specific to the current session, stored locally in `~/.xcommand/sessions/[id]/memories/`.
+- **Global Memory**: Long-term context available across all your workspace interactions, stored in `~/.xcommand/memories/`.
+
+## Knowledge Management
+
+The Knowledge Base allows you to install and manage persistent documentation and rulesets that provide the AI with deep expertise in specific domains.
+
+- **Installation**: Use `/knowledge add <name>` to install modules from the official registry.
+- **Discovery**: Search the registry with `/knowledge search [query]` or list your installed modules with `/knowledge list`.
+- **Customization**: Modules are stored in `~/.xcommand/knowledge/` and can be managed or deleted using the `/knowledge delete <module-name>` command.
+
+## Server Mode
+
+xCommand CLI can operate as a background proxy server, allowing other applications or local scripts to interact with the xCommand Operator Service.
+
+- **Background Proxy**: Running `xcommand server` starts a local proxy (defaulting to port 8080).
+- **Session Management**: The server mode follows the same session-based approach, ensuring context is maintained across asynchronous requests.
+- **Port Selection**: You can specify a custom port using the `--port` flag: `xcommand server --port 9000`.
+
+## Output Formats
+
+xCommand provides flexible output formatting to support both human readability and machine integration.
+
+### Terminal UI (TUI)
+By default, the CLI uses a rich **Terminal UI** powered by themed Markdown. It includes:
+- **Syntax Highlighting**: For code blocks and command outputs.
+- **Dynamic Elements**: Details toggles (accessible via `Tab`), loading states, and status indicators.
+- **Micro-animations**: To provide real-time feedback during long-running operations.
+
+### Machine-Readable (NDJSON)
+When running in **Server Mode**, the CLI communicates using **Newline Delimited JSON (NDJSON)**. This format is ideal for tool-to-tool communication, allowing external processes to stream text, tool calls, and status updates in a structured format.
+
+## Execution Modes
+
+To balance productivity and safety, xCommand provides two execution modes:
+
+### Safe Mode (Default)
+In **Safe Mode**, xCommand acts with caution. 
+- **Approval Required**: Any command identified as "destructive" (e.g., `rm`, `delete`, `drop`) requires explicit user confirmation before execution.
+- **Switching**: You can enter Safe Mode at any time using the `/safe` command.
+
+### Standard Mode
+**Standard Mode** is designed for high-velocity work.
+- **Auto-Execution**: All tools and shell commands execute immediately without additional prompts.
+- **Switching**: You can enter Standard Mode using the `/standard` command.
+
+## Special Commands
+
+- `/clear`: Resets the local session history display.
+- `/insights`: Fetches token usage and session history from the server.
+- `/knowledge`: Access the knowledge management sub-system.
+- `/logout`: Clears authentication tokens and local API keys.
+- `\<command>`: Prefix any command with a backslash to run it directly as a local shell command (e.g., `\ls -la`).

@@ -6,6 +6,14 @@ icon: "lightbulb"
 
 xCommand CLI is built on several key concepts that govern how it manages state, interacts with your local environment, and ensures safety during operations.
 
+## Root Commands
+
+**Root Commands** are the primary entry points for interacting with the xCommand binary. Unlike slash commands which operate within an active chat, root commands manage the CLI's lifecycle, environment, and session state from the host shell.
+
+- **Lifecycle Management**: Commands like `update` and `version` ensure you are running the latest features and provide troubleshooting context.
+- **Session Discovery**: The `sessions` command allows you to browse and resume past interactions, maintaining continuity across your work.
+- **Environment Bridging**: `server` mode transforms the CLI into a background service, enabling programmatic access to the xCommand Operator Service.
+
 ## Sessions
 
 A **Session** in xCommand is a distinct conversation and operation context. Every time you start the CLI, you are working within a session.

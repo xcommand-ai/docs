@@ -12,27 +12,48 @@ Before using xCommand, you need to authenticate. You can trigger the login proce
   To run xCommand in server mode, you will need xCommand API Token as `XCOMMAND_API_KEY` environment variable. You can get it from your xCommand.ai/platform once logged in.
 </Note>
 
-### Basic Usage
+## Root Commands
 
-Run the CLI in interactive mode:
+Root commands are executed directly from your terminal and govern the CLI's behavior and environment.
 
-```bash
-xcommand
-```
+### Help and Version
 
-To run xCommand in server mode defaults to port `8080`:
+- **Help**: Show available commands and options.
+  ```bash
+  xcommand help
+  ```
+- **Version**: Show the current CLI version.
+  ```bash
+  xcommand version
+  ```
 
-```bash
-xcommand server
-```
+### Session Management
 
-For custom port:
+- **List Sessions**: View all local sessions, sorted by most recent first.
+  ```bash
+  xcommand sessions
+  ```
+- **Resume Session**: Rejoin a specific session by its ID.
+  ```bash
+  xcommand [session-id]
+  ```
 
-```bash
-xcommand server --port 9000
-```
+### Environment and Lifecycle
 
-## CLI Features
+- **Update**: Check for and install the latest CLI version.
+  ```bash
+  xcommand update
+  ```
+- **Server Mode**: Start xCommand as a background proxy (defaults to port `8080`).
+  ```bash
+  xcommand server
+  ```
+  Use the `--port` flag for a custom port:
+  ```bash
+  xcommand server --port 9000
+  ```
+
+## CLI Interface
 
 Once logged in, you can interact with the xCommand directly from your terminal. 
 

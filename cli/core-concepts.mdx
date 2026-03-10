@@ -37,9 +37,19 @@ The Knowledge Base allows you to install and manage persistent documentation and
 - **Discovery**: Search the registry with `/knowledge search [query]` or list your installed modules with `/knowledge list`.
 - **Customization**: Modules are stored in `~/.xcommand/knowledge/` and can be managed or deleted using the `/knowledge delete <module-name>` command.
 
-## Server Mode
+## Configuration
 
-xCommand CLI can operate as a background proxy server, allowing other applications or local scripts to interact with the xCommand Operator Service.
+xCommand CLI can be configured using a `config.json` file. This allows you to persist settings such as API keys and preferred execution modes.
+
+- **Storage Location**: By default, the CLI looks for `~/.xcommand/config.json`.
+- **Custom Configuration**: You can specify a custom configuration file using the `--config-file` flag: `xcommand --config-file=/path/to/config.json`.
+- **Fields**:
+  - `api_key`: Your xCommand API key.
+  - `server_port`: The port used for [Server Mode](#server-mode) (default: `8080`).
+  - `mode`: The default [Execution Mode](#execution-modes) (`safe` or `standard`).
+- **Comment Support**: The configuration file supports both `//` and `/* */` style comments, making it easy to document your settings.
+
+## Server Mode
 
 - **Background Proxy**: Running `xcommand server` starts a local proxy (defaulting to port 8080).
 - **Session Management**: The server mode follows the same session-based approach, ensuring context is maintained across asynchronous requests.

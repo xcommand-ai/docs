@@ -25,6 +25,24 @@ Run the CLI in interactive mode:
 xcommand
 ```
 
+### CLI Usage
+
+```text
+Usage: xcommand [command] [options]
+
+Commands:
+  sessions          List all local sessions and their last active time
+  update            Check for and install the latest version of xCommand
+  version           Show the current version of the CLI
+  server            Start the xCommand CLI in server mode
+
+Options:
+  --config-file <path>   Path to a custom configuration file (default: ~/.xcommand/config.json)
+  --port <number>        Specify the port to run the server on
+  bypass-login           Run the CLI without interactive login (requires XCOMMAND_API_KEY)
+  -v, --version          Show the current version
+  -h, --help             Show this help message
+```
 ## Next steps
 
 Now that you have your xCommand running, explore these key features:

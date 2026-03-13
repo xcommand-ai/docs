@@ -1,0 +1,61 @@
+---
+title: "Configuration"
+description: "Learn how to configure the xCommand CLI using environment variables and configuration files."
+icon: "gear"
+---
+
+xCommand CLI can be configured using a `config.json` file or via command-line arguments. This allows you to persist settings like your API key, preferred server port, and execution mode.
+
+## Configuration File
+
+By default, xCommand looks for a configuration file at:
+`~/.xcommand/config.json`
+
+### File Structure
+
+The configuration file is a simple JSON object. Here is the default structure:
+
+```json
+{
+  "api_key": "your-api-key-here",
+  "server_port": 8080,
+  "mode": "safe"
+}
+```
+
+### Fields
+
+| Field | Description | Default |
+| :--- | :--- | :--- |
+| `api_key` | Your xCommand API key for authentication. | `None` |
+| `server_port` | The port used when running in [server mode](/cli/commands#server-mode). | `8080` |
+| `mode` | The default execution mode (`safe` or `standard`). | `safe` |
+
+## CLI Arguments
+
+You can override the default configuration using command-line flags.
+
+### Custom Configuration Path
+
+If you want to use a specific configuration file instead of the default one, use the `--config-file` flag:
+
+```bash
+xcommand --config-file ./custom-config.json
+```
+
+### Server Port Override
+
+When starting the server, you can specify a port that takes precedence over the configuration file:
+
+```bash
+xcommand server --port 9000
+```
+
+## Environment Variables
+
+For automated environments or CI/CD pipelines, you can use the `XCOMMAND_API_KEY` environment variable to authenticate without a configuration file.
+
+```bash
+export XCOMMAND_API_KEY=your_secret_token
+xcommand bypass-login
+```

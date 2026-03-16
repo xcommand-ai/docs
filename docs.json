@@ -27,7 +27,13 @@
               "cli/commands",
               "cli/configuration",
               "cli/core-concepts",
-              "cli/integrations"
+              {
+                "group": "Integrations",
+                "icon": "plug",
+                "pages": [
+                  "cli/integrations/slack"
+                ]
+              }
             ]
           }
         ]

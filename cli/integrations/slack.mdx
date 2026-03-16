@@ -1,0 +1,61 @@
+---
+title: "Slack Integration"
+description: "Connect xCommand to your Slack workspace for remote execution and notifications."
+icon: "slack"
+---
+
+<meta name="slack-app-id" content="A0AKT5U0J3Y" />
+
+The Slack integration allows you to bridge the gap between your communication tools and your infrastructure. By connecting your xCommand CLI session to Slack, you can run commands and receive updates directly from any Slack channel.
+
+## 1. Install xCommand to Slack
+
+Before you can connect your CLI, you need to add the xCommand app to your Slack workspace.
+
+<a href="https://slack.com/oauth/v2/authorize?client_id=10599534432803.10673198018134&scope=im:history,app_mentions:read,channels:history,chat:write,commands,groups:history,mpim:history&user_scope=">
+    <img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack@2x.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" />
+</a>
+
+1.  Click the **Add to Slack** button above.
+2.  Review the requested permissions. xCommand requires permissions to:
+    *   **Slash commands**: Specifically the `/xcommand` command for interaction.
+    *   **Post messages**: To send command results back to your channels.
+    *   **Channel history**: To understand context in threads where xCommand is active.
+3.  Click **Allow** to complete the installation.
+
+## 2. Connect Your CLI Session
+
+Once the app is installed in your workspace, you can connect your specific CLI session (the machine where xCommand is running) to Slack.
+
+1.  In your terminal, start `xcommand` or resume a session.
+2.  Type `/plugin slack connect` and press **Enter**.
+3.  xCommand will generate a unique subscription command for this session. It looks like this:
+    ```bash
+    /xcommand subscribe [session-id] [secret]
+    ```
+4.  Copy this command.
+
+## 3. Activate the Connection in Slack
+
+To finish the bridge, go to any Slack channel where you want to interact with your terminal:
+
+1.  Paste the command you copied into the Slack message bar:
+    ```slack
+    /xcommand subscribe [session-id] [secret]
+    ```
+2.  Press **Enter**.
+3.  You should receive a confirmation message in Slack:
+    > "Slack Connection Active! Tunnel is open and waiting for events..."
+
+## 4. Usage
+
+Now that you're connected, you can interact with your xCommand session directly from Slack.
+
+*   **Mentions**: In any channel or thread where the app is present, mention `@xcommand` followed by your request to get a response.
+*   **Example**: `@xcommand What is the status of my pods?`
+*   **Shell commands**: `@xcommand \ls -la`
+*   **Threaded context**: Replies within a thread are automatically treated as part of the same conversation. Just keep mentioning `@xcommand` in the thread to continue the investigation.
+
+<Note>
+  Your CLI session must be active and running for the Slack connection to work. If you quit the CLI, the tunnel will close.
+</Note>

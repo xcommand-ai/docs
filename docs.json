@@ -27,7 +27,8 @@
               "cli/commands",
               "cli/configuration",
               "cli/core-concepts",
-              "cli/integrations"
+              "cli/integrations",
+              "cli/integrations/slack"
             ]
           }
         ]

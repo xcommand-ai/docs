@@ -1,0 +1,81 @@
+---
+title: "DigitalOcean"
+description: "Enable your xCommand agents to interact with DigitalOcean using doctl and other tools."
+icon: "digital-ocean"
+---
+
+The xCommand DigitalOcean integration allows your agent to use the `doctl` CLI and other DigitalOcean SDK tools on your behalf. By configuring a Personal Access Token, your agent can manage Droplets, Kubernetes clusters, databases, and more.
+
+## Features
+
+- **Droplet Management**: Create, list, and manage Droplets and snapshots.
+- **Kubernetes (DOKS)**: Interact with DigitalOcean Kubernetes clusters.
+- **App Platform**: Deploy and monitor applications on DigitalOcean's App Platform.
+- **Managed Databases**: Manage PostgreSQL, MySQL, Redis, and MongoDB clusters.
+- **Spaces & Volumes**: Manage block storage and object storage.
+
+## Prerequisites
+
+To use this integration, you need:
+1. The **DigitalOcean CLI (`doctl`)** installed on your machine.
+2. A **DigitalOcean Personal Access Token** with read/write scopes.
+
+## Configuration
+
+You can configure the DigitalOcean integration by providing your access token.
+
+### Step 1: Migration
+
+When you run the xCommand CLI, it will automatically update your `~/.xcommand/config.json` with a placeholder field:
+
+```json
+{
+  // ...
+  "mode": "safe"
+  // do_access_token: your_digitalocean_access_token
+}
+```
+
+### Step 2: Authentication
+
+Fill in your DigitalOcean access token:
+
+```json
+{
+  "do_access_token": "dop_v1_your_personal_access_token"
+}
+```
+
+xCommand will automatically set the `DIGITALOCEAN_ACCESS_TOKEN` environment variable and attempt an `doctl auth init` with the token.
+
+## Usage
+
+Once configured, you can ask your xCommand agent to perform DigitalOcean tasks:
+
+<CodeGroup>
+```bash Droplets
+# List droplets
+❯ Show me all my active droplets in nyc3
+```
+
+```bash Kubernetes
+# Check cluster status
+❯ What is the status of my 'prod-cluster' kubernetes cluster?
+```
+
+```bash App Platform
+# Check app status
+❯ Are there any errors in the 'api-service' app deployment?
+```
+</CodeGroup>
+
+## Safety & Control
+
+In **Safe Mode** (default), any DigitalOcean commands that are potentially destructive (like deleting a Droplet or a Volume) will require your confirmation.
+
+```bash
+CONFIRMATION REQUIRED: AI wants to run a destructive command:
+$ doctl compute droplet delete 1234567
+
+Do you want to allow this? (y/n)
+```

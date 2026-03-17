@@ -33,7 +33,10 @@
                 "pages": [
                   "cli/integrations/slack",
                   "cli/integrations/github",
-                  "cli/integrations/google-cloud"
+                  "cli/integrations/google-cloud",
+                  "cli/integrations/aws",
+                  "cli/integrations/azure",
+                  "cli/integrations/digital-ocean"
                 ]
               }
             ]

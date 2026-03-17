@@ -37,7 +37,8 @@
                   "cli/integrations/aws",
                   "cli/integrations/azure",
                   "cli/integrations/digital-ocean",
-                  "cli/integrations/linear"
+                  "cli/integrations/linear",
+                  "cli/integrations/notion"
                 ]
               }
             ]

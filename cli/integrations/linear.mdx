@@ -1,0 +1,42 @@
+---
+title: "Linear Integration"
+description: "Connect xCommand to Linear to manage issues and projects."
+---
+
+xCommand integrates with Linear via a personal API token, allowing the AI to query the Linear GraphQL API directly from your local machine.
+
+## Prerequisites
+
+- A Linear account.
+- A Linear Personal API Key. You can create one in **Settings** > **API** > **Personal API Keys**.
+
+## Configuration
+
+Add your Linear token to your `~/.xcommand/config.json` file:
+
+```json
+{
+  "linear_token": "lin_api_..."
+}
+```
+
+## How it Works
+
+When you ask xCommand about Linear issues or projects, the AI uses the `linear_api_query` tool. This tool makes a GraphQL request to `https://api.linear.app/graphql` using the token stored in your local configuration.
+
+> [!IMPORTANT]
+> Your Linear token stays on your machine. The xCommand service only sends the GraphQL query and variables to your CLI, which then executes the request locally.
+
+## Example Usage
+
+You can ask xCommand to perform various tasks in Linear:
+
+- "List my 5 most recent Linear issues."
+- "Show me the status of the 'Auth Refactor' project in Linear."
+- "What are the high priority issues assigned to me?"
+
+## Security and Privacy
+
+- **Local Execution**: GraphQL queries are executed locally by the CLI.
+- **Token Safety**: Your API token is never sent to the xCommand servers.
+- **Read/Write Access**: The AI can perform any action allowed by your Personal API Key. If you want to limit the AI's capabilities, ensure your token has the minimum necessary permissions (though Linear's personal tokens typically have the same access as the user).

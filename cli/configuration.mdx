@@ -19,7 +19,8 @@ The configuration file is a simple JSON object. Here is the default structure:
 {
   "api_key": "your-api-key-here",
   "server_port": 8080,
-  "mode": "safe"
+  "mode": "safe",
+  "github_token": "your-github-token-here"
 }
 ```
 
@@ -30,6 +31,7 @@ The configuration file is a simple JSON object. Here is the default structure:
 | `api_key` | Your xCommand API key for authentication. | `None` |
 | `server_port` | The port used when running in [server mode](/cli/commands#server-mode). | `8080` |
 | `mode` | The default execution mode (`safe` or `standard`). | `safe` |
+| `github_token` | A GitHub Personal Access Token for the [GitHub Integration](/cli/integrations/github). | `None` |
 
 ## CLI Arguments
 

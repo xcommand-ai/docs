@@ -1,0 +1,83 @@
+---
+title: "GitHub"
+description: "Empower your xCommand agents to manage your GitHub repositories, pull requests, and workflows."
+icon: "github"
+---
+
+The xCommand GitHub integration allows your agent to interact with the GitHub CLI (`gh`) to perform a wide range of repository management tasks. By providing a GitHub token, you give your agent the ability to act on your behalf to manage code, issues, and automation.
+
+## Features
+
+- **Repository Management**: Create, list, and explore repositories.
+- **Pull Requests**: Create, review, merge, and list PRs.
+- **Issue Tracking**: Manage issues and labels.
+- **GitHub Actions**: Monitor and trigger workflow runs.
+
+## Prerequisites
+
+To use this integration, you need:
+1. The **GitHub CLI (`gh`)** installed on your machine.
+2. A **GitHub Personal Access Token (PAT)** with appropriate scopes (e.g., `repo`, `workflow`, `write:packages`).
+
+## Configuration
+
+You can configure the GitHub integration by adding your token to the xCommand configuration file.
+
+### Step 1: Migration
+
+If you are already using xCommand, running the CLI will automatically update your `~/.xcommand/config.json` with a placeholder field:
+
+```json
+{
+  // ...
+  "mode": "safe"
+  // github_token: your_github_token
+}
+```
+
+### Step 2: Authentication
+
+Uncomment the `github_token` line and add your token:
+
+```json
+{
+  "api_key": "your-xcommand-key",
+  "server_port": 8080,
+  "mode": "safe",
+  "github_token": "ghp_your_personal_access_token"
+}
+```
+
+xCommand will automatically inject this token into the `GITHUB_TOKEN` environment variable whenever it executes a GitHub command.
+
+## Usage
+
+Once configured, you can ask your xCommand agent to perform GitHub tasks naturally:
+
+<CodeGroup>
+```bash Pull Requests
+# Ask naturally
+❯ List my open pull requests in the cli repo
+```
+
+```bash Issues
+# Manage issues
+❯ Show me the most recent issues with the 'bug' label
+```
+
+```bash Repo Management
+# Explore repos
+❯ List all repositories in the xcommand-ai organization
+```
+</CodeGroup>
+
+## Safety & Control
+
+When running in **Safe Mode** (default), any GitHub commands that are potentially destructive (like deleting a repository) will require your explicit confirmation in the CLI before they are executed.
+
+```bash
+CONFIRMATION REQUIRED: AI wants to run a destructive command:
+$ gh repo delete xcommand-ai/test-repo --confirm
+
+Do you want to allow this? (y/n)
+```

@@ -1,0 +1,99 @@
+---
+title: "AWS"
+description: "Enable your xCommand agents to interact with AWS using the AWS CLI and other tools."
+icon: "aws"
+---
+
+The xCommand AWS integration allows your agent to use the `aws` CLI and other AWS SDK tools on your behalf. By configuring profile or access key credentials, your agent can manage cloud resources, deploy applications, and query cloud state.
+
+## Features
+
+- **Resource Management**: Create, list, and manage AWS resources (EC2, S3, RDS, etc.).
+- **Lambda & Serverless**: Deploy and monitor serverless applications.
+- **IAM**: Manage Identity and Access Management roles and users.
+- **Kubernetes**: Interact with EKS clusters.
+
+## Prerequisites
+
+To use this integration, you need:
+1. The **AWS CLI (`aws`)** installed on your machine.
+2. An **AWS account** and appropriate IAM permissions for the tasks you want to perform.
+
+## Configuration
+
+You can configure the AWS integration using an AWS profile or explicit access keys.
+
+### Step 1: Migration
+
+When you run the xCommand CLI, it will automatically update your `~/.xcommand/config.json` with placeholder fields:
+
+```json
+{
+  // ...
+  "mode": "safe"
+  // aws_profile: default
+  // aws_access_key_id: your_access_key_id
+  // aws_secret_access_key: your_secret_access_key
+  // aws_region: us-east-1
+}
+```
+
+### Step 2: Authentication
+
+#### Option A: AWS Profile (Recommended)
+
+Uncomment the `aws_profile` line and specify the profile you want to use:
+
+```json
+{
+  "aws_profile": "my-development-profile"
+}
+```
+
+xCommand will automatically set the `AWS_PROFILE` environment variable.
+
+#### Option B: Access Keys
+
+If you prefer to use explicit access keys:
+
+```json
+{
+  "aws_access_key_id": "AKIA...",
+  "aws_secret_access_key": "...",
+  "aws_region": "us-west-2"
+}
+```
+
+xCommand will automatically set the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_REGION` environment variables.
+
+## Usage
+
+Once configured, you can ask your xCommand agent to perform AWS tasks:
+
+<CodeGroup>
+```bash EC2
+# List instances
+❯ Show me all running EC2 instances in us-east-1
+```
+
+```bash S3
+# Manage buckets
+❯ List the contents of my deployment-artifacts bucket
+```
+
+```bash Lambda
+# Check function status
+❯ What is the status of the 'image-processor' lambda?
+```
+</CodeGroup>
+
+## Safety & Control
+
+In **Safe Mode** (default), any AWS commands that are potentially destructive (like deleting an S3 bucket or terminating an instance) will require your confirmation.
+
+```bash
+CONFIRMATION REQUIRED: AI wants to run a destructive command:
+$ aws s3 rb s3://my-important-data --force
+
+Do you want to allow this? (y/n)
+```

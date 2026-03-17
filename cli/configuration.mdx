@@ -22,7 +22,11 @@ The configuration file is a simple JSON object. Here is the default structure:
   "mode": "safe",
   "github_token": "your-github-token-here",
   "gcloud_service_account": "your-sa@project.iam.gserviceaccount.com",
-  "gcloud_service_account_json_path": "/path/to/key.json"
+  "gcloud_service_account_json_path": "/path/to/key.json",
+  "aws_profile": "default",
+  "aws_access_key_id": "your_access_key_id",
+  "aws_secret_access_key": "your_secret_access_key",
+  "aws_region": "us-east-1"
 }
 ```
 
@@ -36,6 +40,10 @@ The configuration file is a simple JSON object. Here is the default structure:
 | `github_token` | A GitHub Personal Access Token for the [GitHub Integration](/cli/integrations/github). | `None` |
 | `gcloud_service_account` | Target Google Cloud Service Account for the [GCP Integration](/cli/integrations/google-cloud). | `None` |
 | `gcloud_service_account_json_path` | Path to a Service Account JSON key for the [GCP Integration](/cli/integrations/google-cloud). | `None` |
+| `aws_profile` | Target AWS Profile for the [AWS Integration](/cli/integrations/aws). | `None` |
+| `aws_access_key_id` | AWS Access Key ID for the [AWS Integration](/cli/integrations/aws). | `None` |
+| `aws_secret_access_key` | AWS Secret Access Key for the [AWS Integration](/cli/integrations/aws). | `None` |
+| `aws_region` | AWS Region for the [AWS Integration](/cli/integrations/aws). | `None` |
 
 ## CLI Arguments
 

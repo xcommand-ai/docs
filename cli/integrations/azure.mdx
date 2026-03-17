@@ -1,0 +1,86 @@
+---
+title: "Azure"
+description: "Enable your xCommand agents to interact with Azure using the Azure CLI and other tools."
+icon: "microsoft"
+---
+
+The xCommand Azure integration allows your agent to use the `az` CLI and other Azure SDK tools on your behalf. By configuring service principal credentials, your agent can manage cloud resources, deploy applications, and query cloud state.
+
+## Features
+
+- **Resource Management**: Create, list, and manage Azure resources (Virtual Machines, Storage Accounts, SQL Databases, etc.).
+- **App Services & Functions**: Deploy and monitor serverless and web applications.
+- **Active Directory (Entra ID)**: Manage users, groups, and service principals.
+- **Kubernetes**: Interact with AKS clusters.
+
+## Prerequisites
+
+To use this integration, you need:
+1. The **Azure CLI (`az`)** installed on your machine.
+2. An **Azure Service Principal** with the necessary roles (e.g., Contributor) for the tasks you want to perform.
+
+## Configuration
+
+You can configure the Azure integration by providing your service principal credentials.
+
+### Step 1: Migration
+
+When you run the xCommand CLI, it will automatically update your `~/.xcommand/config.json` with placeholder fields:
+
+```json
+{
+  // ...
+  "mode": "safe"
+  // azure_client_id: your_client_id
+  // azure_client_secret: your_client_secret
+  // azure_tenant_id: your_tenant_id
+  // azure_subscription_id: your_subscription_id
+}
+```
+
+### Step 2: Authentication
+
+Fill in your service principal details:
+
+```json
+{
+  "azure_client_id": "00000000-0000-0000-0000-000000000000",
+  "azure_client_secret": "your-client-secret",
+  "azure_tenant_id": "00000000-0000-0000-0000-000000000000",
+  "azure_subscription_id": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+xCommand will automatically set the `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`, and `AZURE_SUBSCRIPTION_ID` environment variables and attempt an `az login` for the service principal.
+
+## Usage
+
+Once configured, you can ask your xCommand agent to perform Azure tasks:
+
+<CodeGroup>
+```bash Virtual Machines
+# List VMs
+❯ Show me all running VMs in my resource group
+```
+
+```bash Storage
+# Manage blobs
+❯ List the blobs in my 'backups' container
+```
+
+```bash App Service
+# Check web app status
+❯ What is the status of the 'frontend-prod' app service?
+```
+</CodeGroup>
+
+## Safety & Control
+
+In **Safe Mode** (default), any Azure commands that are potentially destructive (like deleting a resource group or terminating a VM) will require your confirmation.
+
+```bash
+CONFIRMATION REQUIRED: AI wants to run a destructive command:
+$ az group delete --name my-resource-group
+
+Do you want to allow this? (y/n)
+```

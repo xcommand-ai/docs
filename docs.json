@@ -34,7 +34,8 @@
                   "cli/integrations/slack",
                   "cli/integrations/github",
                   "cli/integrations/google-cloud",
-                  "cli/integrations/aws"
+                  "cli/integrations/aws",
+                  "cli/integrations/azure"
                 ]
               }
             ]

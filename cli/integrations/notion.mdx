@@ -1,0 +1,44 @@
+---
+title: "Notion"
+description: "Connect xCommand to Notion to manage your workspace, pages, and databases."
+icon: "notion"
+---
+
+xCommand integrates with Notion via a internal integration token (Personal Access Token), allowing the AI to interact with the Notion API directly from your local machine.
+
+## Prerequisites
+
+- A Notion account.
+- A Notion Internal Integration Token. You can create one at [Notion My Integrations](https://www.notion.so/my-integrations).
+- Ensure your integration has access to the pages or databases you want it to interact with (use the **Connect to** option in Notion's page menu).
+
+## Configuration
+
+Add your Notion token to your `~/.xcommand/config.json` file:
+
+```json
+{
+  "notion_token": "secret_..."
+}
+```
+
+## How it Works
+
+When you ask xCommand about Notion pages or databases, the AI uses the `notion_api_request` tool. This tool makes requests to the Notion API using the token stored in your local configuration.
+
+> [!IMPORTANT]
+> Your Notion token stays on your machine. The xCommand service only sends the API endpoint, method, and body to your CLI, which then executes the request locally.
+
+## Example Usage
+
+You can ask xCommand to perform various tasks in Notion:
+
+- "Search for my Notion pages related to 'Project X'."
+- "List the contents of my 'Tasks' database in Notion."
+- "Create a new page in the 'Meeting Notes' database."
+
+## Security and Privacy
+
+- **Local Execution**: API requests are executed locally by the CLI.
+- **Token Safety**: Your API token is never sent to the xCommand servers.
+- **Access Control**: The AI can only access content that you have explicitly shared with your Notion integration.

@@ -1,0 +1,43 @@
+---
+title: "PagerDuty"
+description: "Connect xCommand to PagerDuty to manage incidents, services, and on-call schedules."
+---
+
+xCommand integrates with PagerDuty via a REST API key, allowing the AI to interact with the PagerDuty API directly from your local machine.
+
+## Prerequisites
+
+- A PagerDuty account.
+- A PagerDuty REST API Key. You can create one in **Configuration** > **API Access** > **Create New API Key**.
+
+## Configuration
+
+Add your PagerDuty token to your `~/.xcommand/config.json` file:
+
+```json
+{
+  "pagerduty_token": "y_Px..."
+}
+```
+
+## How it Works
+
+When you ask xCommand about PagerDuty incidents or services, the AI uses the `pagerduty_api_request` tool. This tool makes requests to the PagerDuty API using the token stored in your local configuration.
+
+> [!IMPORTANT]
+> Your PagerDuty token stays on your machine. The xCommand service only sends the API endpoint, method, body, and query parameters to your CLI, which then executes the request locally.
+
+## Example Usage
+
+You can ask xCommand to perform various tasks in PagerDuty:
+
+- "List all triggered incidents in PagerDuty."
+- "Who is currently on call for the 'Backend' service?"
+- "Acknowledge incident #123 in PagerDuty."
+- "Show me the status of the 'Payment Gateway' service."
+
+## Security and Privacy
+
+- **Local Execution**: API requests are executed locally by the CLI.
+- **Token Safety**: Your API token is never sent to the xCommand servers.
+- **REST API access**: The AI can perform any action allowed by your REST API Key. Ensure your key has the appropriate permissions for the operations you want the AI to perform.

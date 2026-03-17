@@ -20,7 +20,9 @@ The configuration file is a simple JSON object. Here is the default structure:
   "api_key": "your-api-key-here",
   "server_port": 8080,
   "mode": "safe",
-  "github_token": "your-github-token-here"
+  "github_token": "your-github-token-here",
+  "gcloud_service_account": "your-sa@project.iam.gserviceaccount.com",
+  "gcloud_service_account_json_path": "/path/to/key.json"
 }
 ```
 
@@ -32,6 +34,8 @@ The configuration file is a simple JSON object. Here is the default structure:
 | `server_port` | The port used when running in [server mode](/cli/commands#server-mode). | `8080` |
 | `mode` | The default execution mode (`safe` or `standard`). | `safe` |
 | `github_token` | A GitHub Personal Access Token for the [GitHub Integration](/cli/integrations/github). | `None` |
+| `gcloud_service_account` | Target Google Cloud Service Account for the [GCP Integration](/cli/integrations/google-cloud). | `None` |
+| `gcloud_service_account_json_path` | Path to a Service Account JSON key for the [GCP Integration](/cli/integrations/google-cloud). | `None` |
 
 ## CLI Arguments
 

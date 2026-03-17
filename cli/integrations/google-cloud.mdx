@@ -1,0 +1,94 @@
+---
+title: "Google Cloud"
+description: "Enable your xCommand agents to interact with Google Cloud using gcloud and other GCP tools."
+icon: "google"
+---
+
+The xCommand Google Cloud integration allows your agent to use the `gcloud` CLI and other Google Cloud SDK tools on your behalf. By configuring service account credentials, your agent can manage cloud resources, deploy applications, and query cloud state.
+
+## Features
+
+- **Resource Management**: Create, list, and manage GCP resources (Compute Engine, Cloud Storage, etc.).
+- **Cloud Run/Functions**: Deploy and monitor serverless applications.
+- **Identity & Access**: Manage IAM roles and service accounts.
+- **Kubernetes**: Interact with GKE clusters.
+
+## Prerequisites
+
+To use this integration, you need:
+1. The **Google Cloud CLI (`gcloud`)** installed on your machine.
+2. A **Service Account** with the necessary IAM permissions for the tasks you want to perform.
+3. (Optional) A **JSON key file** for the service account.
+
+## Configuration
+
+You can configure the GCP integration in two ways: using a Service Account name (ADC) or a JSON key file.
+
+### Step 1: Migration
+
+When you run the xCommand CLI, it will automatically update your `~/.xcommand/config.json` with placeholder fields:
+
+```json
+{
+  // ...
+  "mode": "safe"
+  // gcloud_service_account: your_sa_name@project.iam.gserviceaccount.com
+  // gcloud_service_account_json_path: /path/to/key.json
+}
+```
+
+### Step 2: Authentication
+
+#### Option A: Service Account JSON (Recommended for CI/Server)
+
+Uncomment the `gcloud_service_account_json_path` line and provide the absolute path to your key file:
+
+```json
+{
+  "gcloud_service_account_json_path": "/Users/username/keys/my-sa-key.json"
+}
+```
+
+xCommand will automatically set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable and activate the service account for `gcloud`.
+
+#### Option B: Service Account Name (ADC)
+
+If you are running in an environment with Application Default Credentials (like a GCE instance or after running `gcloud auth application-default login`), you can specify the account name:
+
+```json
+{
+  "gcloud_service_account": "my-service-account@my-project.iam.gserviceaccount.com"
+}
+```
+
+## Usage
+
+Once configured, you can ask your xCommand agent to perform GCP tasks:
+
+<CodeGroup>
+```bash Compute Engine
+# List instances
+❯ Show me all running GCE instances in project-x
+```
+
+```bash Cloud Storage
+# Manage buckets
+❯ List the contents of my application-logs bucket
+```
+
+```bash Cloud Run
+# Check service status
+❯ What is the status of the 'auth-service' in region us-central1?
+```
+</CodeGroup>
+
+## Safety & Control
+
+In **Safe Mode** (default), any GCP commands that are potentially destructive (like deleting a bucket or terminating an instance) will require your confirmation.
+
+```bash
+CONFIRMATION REQUIRED: AI wants to run a destructive command:
+$ gcloud storage buckets delete gs://my-important-data
+
+Do you want to allow this? (y/n)
+```

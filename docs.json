@@ -38,7 +38,8 @@
                   "cli/integrations/azure",
                   "cli/integrations/digital-ocean",
                   "cli/integrations/linear",
-                  "cli/integrations/notion"
+                  "cli/integrations/notion",
+                  "cli/integrations/pagerduty"
                 ]
               }
             ]

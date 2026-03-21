@@ -82,10 +82,11 @@ While in the interactive chat, you can use slash commands to perform specific ac
   - Typing `/brief [custom instructions]` saves those instructions locally (`~/.xcommand/brief_prompt.md`). xCommand will prioritize your custom prompt during all future session briefings.
   - Typing `/brief clear` (or `reset` or `default`) removes your custom prompt and reverts to the standard xCommand briefing.
 - `/status`: Open the xCommand system status page in your default browser.
-- `/tasks [description]`: Create a new automated task based on your natural language description.
-- `/tasks list`: View all your saved automated tasks and their IDs.
-- `/tasks xc-<id> [args]`: Execute a saved task, optionally passing arguments to replace placeholders (e.g., `/tasks xc-1 user-123`).
-- `/tasks delete <id>`: Remove a saved task.
+- `/tasks`: Manage automated tasks to avoid repetitive toil.
+  - `/tasks [description]`: Create a new automated task based on your natural language description.
+  - `/tasks list`: View all your saved automated tasks and their IDs.
+  - `/tasks xc-<id> [args]`: Execute a saved task, optionally passing arguments to replace placeholders (e.g., `/tasks xc-1 user-123`).
+  - `/tasks delete <id>`: Remove a saved task.
 - `/help`: Show the help screen.
 
 <Tip>

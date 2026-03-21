@@ -45,6 +45,15 @@ The Knowledge Base allows you to install and manage persistent documentation and
 - **Discovery**: Search the registry with `/knowledge search [query]` or list your installed modules with `/knowledge list`.
 - **Customization**: Modules are stored in `~/.xcommand/knowledge/` and can be managed or deleted using the `/knowledge delete <module-name>` command.
 
+## Automated Tasks
+
+Automated Tasks allow you to define and save repetitive workflows, reducing manual toil and ensuring consistency across operations.
+
+- **Natural Language Creation**: Use `/tasks [description]` to describe a task in plain English. xCommand's AI will distill this into a refined technical prompt and assign a unique task ID (e.g., `xc-1`).
+- **Dynamic Arguments**: Tasks support placeholders (like `$1`, `$2`) that are automatically replaced with arguments you provide during execution (e.g., `/tasks xc-1 user-123 admin`).
+- **Local Persistence**: Task definitions are stored locally in `~/.xcommand/tasks/`, making your automation library available even when working offline.
+- **Management**: You can list your automation library with `/tasks list` and remove old tasks with `/tasks delete <id>`.
+
 ## Configuration
 
 xCommand CLI can be configured using a `config.json` file. This allows you to persist settings such as API keys and preferred execution modes.
@@ -95,5 +104,6 @@ In **Safe Mode**, xCommand acts with caution.
 - `/clear`: Resets the local session history display.
 - `/insights`: Fetches token usage and session history from the server.
 - `/knowledge`: Access the knowledge management sub-system.
+- `/tasks`: Create, list, and execute automated tasks.
 - `/logout`: Clears authentication tokens and local API keys.
 - `\<command>`: Prefix any command with a backslash to run it directly as a local shell command (e.g., `\ls -la`).

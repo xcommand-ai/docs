@@ -37,13 +37,7 @@ Memory allows xCommand to remember specific details across sessions and conversa
 - **Session Memory**: Short-term context specific to the current session, stored locally in `~/.xcommand/sessions/[id]/memories/`.
 - **Global Memory**: Long-term context available across all your workspace interactions, stored in `~/.xcommand/memories/`.
 
-## Knowledge Management
 
-The Knowledge Base allows you to install and manage persistent documentation and rulesets that provide the AI with deep expertise in specific domains.
-
-- **Installation**: Use `/knowledge add <name>` to install modules from the official registry.
-- **Discovery**: Search the registry with `/knowledge search [query]` or list your installed modules with `/knowledge list`.
-- **Customization**: Modules are stored in `~/.xcommand/knowledge/` and can be managed or deleted using the `/knowledge delete <module-name>` command.
 
 ## Automated Tasks
 
@@ -103,7 +97,7 @@ In **Safe Mode**, xCommand acts with caution.
 
 - `/clear`: Resets the local session history display.
 - `/insights`: Fetches token usage and session history from the server.
-- `/knowledge`: Access the knowledge management sub-system.
+
 - `/tasks`: Create, list, and execute automated tasks.
 - `/logout`: Clears authentication tokens and local API keys.
 - `\<command>`: Prefix any command with a backslash to run it directly as a local shell command (e.g., `\ls -la`).

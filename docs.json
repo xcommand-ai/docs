@@ -25,6 +25,7 @@
             "pages": [
               "cli/installation",
               "cli/commands",
+              "cli/orbs",
               "cli/configuration",
               "cli/core-concepts",
               {

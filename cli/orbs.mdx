@@ -9,7 +9,7 @@ Orbs are persistent, named background daemon agents that carry a domain-specific
 ## Key Features
 
 - **Autonomous Loop**: Orbs run on a configurable interval (default 60s), autonomously checking their area of responsibility.
-- **Custom Personas**: Each orb can be tailored with a specific persona, such as an "Oncall Engineer," "Security Auditor," or "Cost Optimizer."
+- **Custom Personas**: Each orb can be tailored with a specific persona, such as an "Oncall Engineer," "Security Auditor," or "Cost Optimiser."
 - **Full Tool Access**: Orbs have access to all xCommand tools, including `run_command`, `read_file`, and Cloud integrations.
 - **Persistent Logging**: Every action, thought, and tool result is logged to a local file for auditability.
 
@@ -51,5 +51,5 @@ xcommand orbs create oncall-monitor
 ## Technical Details
 
 - **Storage**: Orb configurations and logs are stored in `~/.xcommand/<name>/`.
-- **Daemonization**: Starting an orb spawns a detached Bun process that persists even after you close your terminal.
+- **Daemonisation**: Starting an orb spawns a detached Bun process that persists even after you close your terminal.
 - **Authentication**: Orbs use your existing xCommand authentication (JWT or API Key) to communicate with the operator service.

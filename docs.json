@@ -31,7 +31,6 @@
                 "group": "Integrations",
                 "icon": "plug",
                 "pages": [
-                  "cli/integrations/slack",
                   "cli/integrations/github",
                   "cli/integrations/google-cloud",
                   "cli/integrations/aws",
